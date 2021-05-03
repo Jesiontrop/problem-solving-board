@@ -1,8 +1,8 @@
-package ru.nlmk.problemsolvingboard.repository;
+package andrey.jesiontrop.problemsolvingboard.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import ru.nlmk.problemsolvingboard.model.SolvingLevel;
+import andrey.jesiontrop.problemsolvingboard.model.SolvingLevel;
 
 public interface SolvingLevelRepository extends JpaRepository<SolvingLevel, Long> {
 }

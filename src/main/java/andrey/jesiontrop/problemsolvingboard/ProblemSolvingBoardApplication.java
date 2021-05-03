@@ -1,4 +1,4 @@
-package ru.nlmk.problemsolvingboard;
+package andrey.jesiontrop.problemsolvingboard;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

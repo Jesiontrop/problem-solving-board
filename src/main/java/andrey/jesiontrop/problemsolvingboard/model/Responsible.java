@@ -1,9 +1,10 @@
-package ru.nlmk.problemsolvingboard.model;
+package andrey.jesiontrop.problemsolvingboard.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -13,16 +14,17 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "fa_responsible")
-public class FaResponsible {
+@Table(name = "responsible")
+public class Responsible {
 
     @Id
-    @SequenceGenerator(name = "fa_responsible_id_seq",
-            sequenceName = "fa_responsible_id_seq",
+    @SequenceGenerator(name = "responsible_id_seq",
+            sequenceName = "responsible_id_seq",
             allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
-                    generator = "fa_responsible_id_seq")
+                    generator = "responsible_id_seq")
     private Long id;
 
-    private String name;
+    @OneToOne(targetEntity = User.class)
+    private Long userId;
 }

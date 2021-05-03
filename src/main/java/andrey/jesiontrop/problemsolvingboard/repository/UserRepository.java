@@ -1,8 +1,8 @@
-package ru.nlmk.problemsolvingboard.repository;
+package andrey.jesiontrop.problemsolvingboard.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import ru.nlmk.problemsolvingboard.model.User;
+import andrey.jesiontrop.problemsolvingboard.model.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 }

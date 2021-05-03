@@ -1,4 +1,4 @@
-package ru.nlmk.problemsolvingboard.model;
+package andrey.jesiontrop.problemsolvingboard.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,15 +13,15 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "solving_levels")
-public class SolvingLevel {
+@Table(name = "risk_levels")
+public class RiskLevel {
 
     @Id
-    @SequenceGenerator(name = "solving_levels_id_seq",
-            sequenceName = "solving_levels_id_seq",
+    @SequenceGenerator(name = "risk_levels_id_seq",
+            sequenceName = "risk_levels_id_seq",
             allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
-                    generator = "solving_levels_id_seq")
+                    generator = "risk_levels_id_seq")
     private Long id;
 
     private String name;

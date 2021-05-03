@@ -1,4 +1,4 @@
-package ru.nlmk.problemsolvingboard.model;
+package andrey.jesiontrop.problemsolvingboard.model;
 
 import java.util.Date;
 

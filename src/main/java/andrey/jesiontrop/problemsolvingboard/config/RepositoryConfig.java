@@ -1,19 +1,19 @@
-package ru.nlmk.problemsolvingboard.config;
+package andrey.jesiontrop.problemsolvingboard.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import ru.nlmk.problemsolvingboard.model.Area;
-import ru.nlmk.problemsolvingboard.model.Board;
-import ru.nlmk.problemsolvingboard.model.FaResponsible;
-import ru.nlmk.problemsolvingboard.model.Leader;
-import ru.nlmk.problemsolvingboard.model.Position;
-import ru.nlmk.problemsolvingboard.model.ResolutionStatus;
-import ru.nlmk.problemsolvingboard.model.Responsible;
-import ru.nlmk.problemsolvingboard.model.RiskLevel;
-import ru.nlmk.problemsolvingboard.model.SolvingLevel;
-import ru.nlmk.problemsolvingboard.model.User;
+import andrey.jesiontrop.problemsolvingboard.model.FaResponsible;
+import andrey.jesiontrop.problemsolvingboard.model.Leader;
+import andrey.jesiontrop.problemsolvingboard.model.Position;
+import andrey.jesiontrop.problemsolvingboard.model.ResolutionStatus;
+import andrey.jesiontrop.problemsolvingboard.model.Responsible;
+import andrey.jesiontrop.problemsolvingboard.model.RiskLevel;
+import andrey.jesiontrop.problemsolvingboard.model.SolvingLevel;
+import andrey.jesiontrop.problemsolvingboard.model.User;
+import andrey.jesiontrop.problemsolvingboard.model.Area;
+import andrey.jesiontrop.problemsolvingboard.model.Board;
 
 @Configuration
 public class RepositoryConfig implements RepositoryRestConfigurer {
