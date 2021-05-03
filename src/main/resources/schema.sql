@@ -5,13 +5,13 @@ CREATE TABLE IF NOT EXISTS positions (
 
 CREATE TABLE IF NOT EXISTS leaders (
     id bigserial PRIMARY KEY,
-    fullname varchar(255),
+    username varchar(255),
     email varchar(255)
 );
 
 CREATE TABLE IF NOT EXISTS users (
     id bigserial PRIMARY KEY,
-    fullname varchar(255) ,
+    username varchar(255) ,
     email varchar(255),
     position varchar(255),
     password varchar(255),
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS responsible (
         ON DELETE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS fa_responsible (
+CREATE TABLE IF NOT EXISTS fm_responsible (
   id bigserial PRIMARY KEY,
   name varchar(255)
 );
@@ -68,14 +68,14 @@ CREATE TABLE IF NOT EXISTS board (
     actual_date date,
     solving_level_id bigint,
     resolution_status_id bigint,
-    fa_responsible_id bigint,
+    fm_responsible_id bigint,
     reason_for_refusal text,
     CONSTRAINT board_area_id_fkey FOREIGN KEY (area_id)
         REFERENCES areas (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE CASCADE,
-    CONSTRAINT board_fa_responsible_id_fkey FOREIGN KEY (fa_responsible_id)
-        REFERENCES fa_responsible (id) MATCH SIMPLE
+    CONSTRAINT board_fm_responsible_id_fkey FOREIGN KEY (fm_responsible_id)
+        REFERENCES fm_responsible (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE CASCADE,
     CONSTRAINT board_resolution_status_id_fkey FOREIGN KEY (resolution_status_id)
@@ -98,7 +98,7 @@ CREATE TABLE IF NOT EXISTS board (
 
 CREATE OR REPLACE VIEW v_responsible AS
 	SELECT r.id, r.user_id,
-		u.fullname AS user_fullname,
+		u.username AS user_username,
 		u.email AS user_email,
 		u.position AS user_position
 	FROM responsible AS r
@@ -115,15 +115,15 @@ CREATE OR REPLACE VIEW v_board AS
         rl.name AS risk_level_name,
         b.proposed_solution,
 		v_r.user_id,
-        v_r.user_fullname AS responsible_name,
+        v_r.user_username AS responsible_name,
         b.planned_date,
         b.actual_date,
 		b.solving_level_id,
         sl.name AS solving_level_name,
 		b.resolution_status_id,
         rs.name AS resolution_status_name,
-		b.fa_responsible_id,
-        far.name AS fa_responsible_name,
+		b.fm_responsible_id,
+        fmr.name AS fm_responsible_name,
         b.reason_for_refusal
     FROM board b
         LEFT JOIN areas ON b.area_id = areas.id
@@ -131,5 +131,5 @@ CREATE OR REPLACE VIEW v_board AS
         LEFT JOIN v_responsible v_r ON b.responsible_id = v_r.id
         LEFT JOIN solving_levels sl ON b.solving_level_id = sl.id
         LEFT JOIN resolution_statuses rs ON b.resolution_status_id = rs.id
-        LEFT JOIN fa_responsible far ON b.fa_responsible_id = far.id
+        LEFT JOIN fm_responsible fmr ON b.fm_responsible_id = fmr.id
     ORDER BY b.registration_date DESC;

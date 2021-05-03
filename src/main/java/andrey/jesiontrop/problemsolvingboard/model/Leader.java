@@ -9,9 +9,10 @@ import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "leaders")
 public class Leader {
@@ -24,6 +25,6 @@ public class Leader {
                     generator = "leaders_id_seq")
     private Long id;
 
-    private String fullname;
+    private String username;
     private String email;
 }

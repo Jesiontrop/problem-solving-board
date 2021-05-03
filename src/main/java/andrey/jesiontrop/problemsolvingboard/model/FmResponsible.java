@@ -13,15 +13,15 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "fa_responsible")
-public class FaResponsible {
+@Table(name = "fm_responsible")
+public class FmResponsible {
 
     @Id
-    @SequenceGenerator(name = "fa_responsible_id_seq",
-            sequenceName = "fa_responsible_id_seq",
+    @SequenceGenerator(name = "fm_responsible_id_seq",
+            sequenceName = "fm_responsible_id_seq",
             allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
-                    generator = "fa_responsible_id_seq")
+                    generator = "fm_responsible_id_seq")
     private Long id;
 
     private String name;

@@ -59,11 +59,11 @@ public class Board {
 
     @ManyToOne(targetEntity = ResolutionStatus.class)
     @JoinColumn(name = "resolution_status_id")
-    private Long resolutionStatusId;
+    private ResolutionStatus resolutionStatusId;
 
-    @ManyToOne(targetEntity = FaResponsible.class)
-    @JoinColumn(name = "fa_responsible_id")
-    private Long fmResponsibleId;
+    @ManyToOne(targetEntity = FmResponsible.class)
+    @JoinColumn(name = "fm_responsible_id")
+    private FmResponsible fmResponsibleId;
 
     @PrePersist
     void registrationDate() {

@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import andrey.jesiontrop.problemsolvingboard.model.FaResponsible;
+import andrey.jesiontrop.problemsolvingboard.model.FmResponsible;
 import andrey.jesiontrop.problemsolvingboard.model.Leader;
 import andrey.jesiontrop.problemsolvingboard.model.Position;
 import andrey.jesiontrop.problemsolvingboard.model.ResolutionStatus;
@@ -22,7 +22,7 @@ public class RepositoryConfig implements RepositoryRestConfigurer {
         config.exposeIdsFor(
             Area.class,
             Board.class,
-            FaResponsible.class,
+            FmResponsible.class,
             Leader.class,
             Position.class,
             ResolutionStatus.class,
