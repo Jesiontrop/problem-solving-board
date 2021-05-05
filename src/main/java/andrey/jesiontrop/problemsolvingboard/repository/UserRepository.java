@@ -6,5 +6,5 @@ import andrey.jesiontrop.problemsolvingboard.model.Leader;
 import andrey.jesiontrop.problemsolvingboard.model.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
-    User findByUsername(String username);
+    User findByEmail(String email);
 }
