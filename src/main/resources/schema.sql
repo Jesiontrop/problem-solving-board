@@ -1,3 +1,5 @@
+/* Tables */
+
 CREATE TABLE IF NOT EXISTS positions (
 	id serial PRIMARY KEY,
 	name varchar(255)
@@ -6,13 +8,13 @@ CREATE TABLE IF NOT EXISTS positions (
 CREATE TABLE IF NOT EXISTS leaders (
     id bigserial PRIMARY KEY,
     username varchar(255),
-    email varchar(255)
+    email varchar(255) UNIQUE
 );
 
 CREATE TABLE IF NOT EXISTS users (
     id bigserial PRIMARY KEY,
-    username varchar(255) ,
-    email varchar(255),
+    username varchar(255),
+    email varchar(255) UNIQUE,
     position varchar(255),
     password varchar(255),
     leader_id bigint,
@@ -96,6 +98,8 @@ CREATE TABLE IF NOT EXISTS board (
         ON DELETE CASCADE
 );
 
+/* Views */
+
 CREATE OR REPLACE VIEW v_responsible AS
 	SELECT r.id, r.user_id,
 		u.username AS user_username,
@@ -133,3 +137,29 @@ CREATE OR REPLACE VIEW v_board AS
         LEFT JOIN resolution_statuses rs ON b.resolution_status_id = rs.id
         LEFT JOIN fm_responsible fmr ON b.fm_responsible_id = fmr.id
     ORDER BY b.registration_date DESC;
+
+/* Functions */
+
+CREATE OR REPLACE FUNCTION exist_leader(u varchar(255), e varchar(255))
+RETURNS bigint AS $$
+DECLARE leader_id bigint;
+BEGIN
+	SELECT l.id INTO leader_id
+	FROM leaders AS l
+	WHERE l.username = u AND l.email = e;
+
+	RETURN leader_id;
+END;
+$$ LANGUAGE plpgsql;;
+
+/* Triggers functions */
+
+CREATE OR REPLACE FUNCTION user_is_leader_trigger()
+RETURNS trigger AS $user_is_leader_trigger$
+DECLARE leader_id bigint;
+BEGIN
+	SELECT exist_leader(NEW.username, NEW.email) INTO leader_id;
+	NEW.leader_id = leader_id;
+    RETURN NEW;
+END;
+$user_is_leader_trigger$ LANGUAGE plpgsql;;

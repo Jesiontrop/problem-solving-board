@@ -5,6 +5,8 @@ DELETE FROM resolution_statuses;
 DELETE FROM responsible;
 DELETE FROM risk_levels;
 DELETE FROM solving_levels;
+DELETE FROM leaders;
+DELETE FROM users;
 
 SELECT setval('board_id_seq', 1, false);
 SELECT setval('areas_id_seq', 1, false);
@@ -13,6 +15,8 @@ SELECT setval('resolution_statuses_id_seq', 1, false);
 SELECT setval('responsible_id_seq', 1, false);
 SELECT setval('risk_levels_id_seq', 1, false);
 SELECT setval('solving_levels_id_seq', 1, false);
+SELECT setval('leaders_id_seq', 1, false);
+SELECT setval('users_id_seq', 1, false);
 
 INSERT INTO areas(name) VALUES
     ('ВиВОС'),
@@ -49,7 +53,7 @@ INSERT INTO areas(name) VALUES
     ('Отдел по экономической безопасности'),
     ('Отдел по административно хозяйственной деятельности'),
     ('Группа подготовки и развития персонала'),
-    ('ЦКР');
+    ('ЦКР');;
 
 INSERT INTO fm_responsible (name) VALUES
     ('ФН Снабжение'),
@@ -57,12 +61,12 @@ INSERT INTO fm_responsible (name) VALUES
     ('ФН Персонал'),
     ('ФН ОЭ'),
     ('ФН ОТиПБ'),
-    ('ФН ЭУ');
+    ('ФН ЭУ');;
 
 INSERT INTO risk_levels (name) VALUES
     ('Приемлемый'),
     ('Высокий'),
-    ('Неприемлемый');
+    ('Неприемлемый');;
 
 INSERT INTO solving_levels (name) VALUES
     ('Участок'),
@@ -70,15 +74,15 @@ INSERT INTO solving_levels (name) VALUES
     ('Отдел'),
     ('ФН'),
     ('Предприятие'),
-    ('ЦРМО');
+    ('ЦРМО');;
 
 INSERT INTO resolution_statuses (name) VALUES
     ('Решена'),
     ('В работе'),
     ('Требуется эскалация на уровень ФН'),
     ('Требуется эскалация на уровень руководства'),
-    ('Не решена');
+    ('Не решена');;
 
 INSERT INTO positions (name) VALUES
     ('Работник'),
-    ('Руководитель');
+    ('Руководитель');;
