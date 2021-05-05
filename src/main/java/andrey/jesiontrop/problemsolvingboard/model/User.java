@@ -35,13 +35,20 @@ public class User implements UserDetails {
     private Long id;
 
     private String username;
-    private String position;
     private String email;
+    private String position;
     private String password;
 
     @OneToOne(targetEntity = Leader.class)
     @JoinColumn(name = "leader_id")
     private Leader leaderId;
+
+    public User(String username, String email, String position, String password) {
+        this.username = username;
+        this.email = email;
+        this.position = position;
+        this.password = password;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -50,21 +57,21 @@ public class User implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 }
