@@ -1,0 +1,53 @@
+@import "color";
+@import "text";
+
+%field {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: $gray-6;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+%field:active, %button:focus {
+    outline: none;
+}
+%field::-moz-focus-inner {
+    border: 0;
+}
+
+input:focus, span:focus, textarea:focus, select:focus{
+    outline: none;
+}
+
+.field-1 {
+    @extend %field;
+    width: fit-content;
+    min-width: 200px;
+    height: fit-content;
+    padding: 10px 20px;
+    border-radius: 15px;
+    @include roboto-24-regular;
+    color: $black;
+    text-align: left;
+}
+
+.field-2 {
+    @extend %field;
+    width: fit-content;
+    min-width: 100px;
+    height: fit-content;
+    padding: 5px 10px;
+    border-radius: 7px;
+    @include roboto-14-regular;
+    color: $black;
+    text-align: left;
+}
+
+.text {
+    @include roboto-24-regular;
+    color: $black;
+    text-align: center;
+}
+
