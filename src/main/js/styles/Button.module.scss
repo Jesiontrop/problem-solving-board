@@ -1,0 +1,45 @@
+@import "color";
+@import "text";
+
+%button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 30px;
+  border: none;
+  background-color: $blue-3;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+%button:active, %button:focus {
+  outline: none;
+}
+%button::-moz-focus-inner {
+  border: 0;
+}
+.button-1 {
+  @extend %button;
+  width: fit-content;
+  height: 50px;
+  border-radius: 6px;
+  .text {
+    @include roboto-24-regular;
+    color: $black;
+    text-align: center;
+  }
+}
+.button-2 {
+  @extend %button;
+  width: fit-content;
+  height: 38px;
+  .text {
+    @include roboto-14-regular;
+    color: $black;
+    text-align: center;
+  }
+}
+.text {
+  @include roboto-24-regular;
+  color: $black;
+  text-align: center;
+}
