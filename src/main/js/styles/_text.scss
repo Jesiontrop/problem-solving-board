@@ -1,0 +1,33 @@
+@import "color";
+
+%roboto-regular {
+  font-family: Roboto, serif;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1.16;
+  text-align: center;
+
+  color: $black;
+}
+
+@mixin roboto-64-regular {
+  @extend %roboto-regular;
+  font-size: 64px;
+}
+
+@mixin roboto-36-regular {
+  @extend %roboto-regular;
+  font-size: 36px;
+}
+
+@mixin roboto-24-regular {
+  @extend %roboto-regular;
+  font-size: 24px;
+  line-height: 28px;
+}
+
+@mixin roboto-14-regular {
+  @extend %roboto-regular;
+  font-size: 14px;
+  line-height: 16px;
+}
