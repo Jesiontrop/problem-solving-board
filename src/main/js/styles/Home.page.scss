@@ -1,0 +1,17 @@
+@import "text";
+@import "color";
+
+main {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+
+  * + * {
+    margin-top: 15px;
+  }
+}
