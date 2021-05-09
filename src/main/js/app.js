@@ -1,14 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route } from "react-router-dom";
-import {Button} from "./modules/Button";
 import style from "./styles/main.scss"
-
-const Test = () => {
-    return (
-        <Button/>
-    );
-}
+import {Home} from "./pages/Home";
 
 class App extends React.Component {
     constructor(props) {
@@ -17,9 +11,11 @@ class App extends React.Component {
 
     render() {
         return (
-            <BrowserRouter >
-                <Route exact path="/" component={Test}/>
-            </BrowserRouter>
+            <div>
+                <BrowserRouter >
+                    <Route exact path="/" component={Home}/>
+                </BrowserRouter>
+            </div>
         );
     }
 }
