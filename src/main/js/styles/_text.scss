@@ -10,11 +10,6 @@
   color: $black;
 }
 
-@mixin roboto-64-regular {
-  @extend %roboto-regular;
-  font-size: 64px;
-}
-
 @mixin roboto-36-regular {
   @extend %roboto-regular;
   font-size: 36px;
@@ -24,6 +19,11 @@
   @extend %roboto-regular;
   font-size: 24px;
   line-height: 28px;
+}
+
+@mixin roboto-18-regular {
+  @extend %roboto-regular;
+  font-size: 18px;
 }
 
 @mixin roboto-14-regular {
