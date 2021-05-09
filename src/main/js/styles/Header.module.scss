@@ -10,13 +10,14 @@ header {
   align-items: center;
   padding: 20px;
   background: $gray-6;
+  * + * {
+    margin-left: 10px;
+  }
   .text {
     @include roboto-24-regular;
     width: 100%;
     color: $black;
     text-align: left;
-    margin: 0 10px;
   }
-
 }
 
