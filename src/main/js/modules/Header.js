@@ -14,7 +14,7 @@ class Header extends React.Component {
 
     render() {
         return (
-            <header>
+            <header className={style.header}>
                 <Button version="b-2" style={this.styleHomeButton} text="ДРП"/>
                 <div className={style.text}>
                     {this.headline}
