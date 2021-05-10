@@ -1,7 +1,8 @@
 import React from "react";
 import {Button} from "../modules/Button";
 import {Header} from "../modules/Header";
-import style from "../styles/Home.page.scss"
+import style from "../styles/Home.module.scss"
+import {Link, NavLink} from "react-router-dom";
 
 class Home extends React.Component {
     constructor(props) {
@@ -12,8 +13,9 @@ class Home extends React.Component {
         return (
             <div>
                 <Header hideHomeButton/>
-                <main>
-                    <Button text="Занести проблему"/>
+                <main className={style.homePage}>
+                    <Link to="/add" style={{textDecoration: 'none'}}><Button text="Занести проблему"/></Link>
+
                     <Button text="Посмотреть доску решения проблем"/>
                 </main>
             </div>
