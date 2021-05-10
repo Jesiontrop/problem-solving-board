@@ -1,7 +1,7 @@
 @import "color";
 @import "text";
 
-button {
+%button {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -10,13 +10,14 @@ button {
   background-color: $blue-3;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
-button:active, button:focus {
+%button:active, button:focus {
   outline: none;
 }
-button::-moz-focus-inner {
+%button::-moz-focus-inner {
   border: 0;
 }
 .b-1 {
+  @extend %button;
   width: fit-content;
   height: 50px;
   border-radius: 6px;
@@ -28,6 +29,7 @@ button::-moz-focus-inner {
   }
 }
 .b-2 {
+  @extend %button;
   width: fit-content;
   height: 35px;
   border-radius: 6px;
@@ -39,6 +41,7 @@ button::-moz-focus-inner {
   }
 }
 .b-3 {
+  @extend %button;
   width: fit-content;
   height: 25px;
   border-radius: 5px;
