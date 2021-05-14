@@ -15,11 +15,11 @@ class Header extends React.Component {
     render() {
         return (
             <header className={style.header}>
-                <Button version="b-2" style={this.styleHomeButton} text="ДРП"/>
+                <Button className="b-2" style={this.styleHomeButton} text="ДРП"/>
                 <div className={style.text}>
                     {this.headline}
                 </div>
-                <Button version="b-2" text={this.buttonText}/>
+                <Button className="b-2" text={this.buttonText}/>
             </header>
         );
     }

@@ -21,7 +21,7 @@ input:focus, span:focus, textarea:focus, select:focus{
     outline: none;
 }
 
-.field-1 {
+.f-1 {
     @extend %field;
     width: fit-content;
     min-width: 200px;
@@ -33,7 +33,7 @@ input:focus, span:focus, textarea:focus, select:focus{
     text-align: left;
 }
 
-.field-2 {
+.f-2 {
     @extend %field;
     width: fit-content;
     min-width: 100px;

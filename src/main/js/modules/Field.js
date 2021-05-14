@@ -5,14 +5,13 @@ class InfoField extends React.Component {
     constructor(props) {
         super(props);
         this.text = props.text;
-        this.version = props.version ? props.version : "1";
-        this.styleVersion = "field-" + this.version;
+        this.className = props.className ? props.className : "f-1";
         this.style = props.style;
     }
 
     render() {
         return (
-            <div className={styles[this.styleVersion]} style={this.style}>
+            <div className={styles[this.className]} style={this.style}>
                 {this.text}
             </div>
         );
@@ -23,15 +22,14 @@ class EditField extends React.Component {
     constructor(props) {
         super(props);
         this.text = props.text;
-        this.placholder = props.placeholder
-        this.version = props.version ? props.version : "1";
-        this.styleVersion = "field-" + this.version;
+        this.placeholder = props.placeholder;
+        this.className = props.className ? props.className : "f-1";
         this.style = props.style;
     }
 
     render() {
         return (
-            <input className={styles[this.styleVersion]} style={this.style} value={this.text} placeholder={this.placeholder}/>
+            <input type="text" className={styles[this.className]} style={this.style} value={this.text} placeholder={this.placeholder}/>
         );
     }
 }
