@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../styles/Field.module.scss";
+import client from "../client";
 
 class InfoField extends React.Component {
     constructor(props) {
@@ -37,20 +38,19 @@ class EditField extends React.Component {
 class SelectField extends React.Component {
     constructor(props) {
         super(props);
-        this.text = props.text;
         this.placeholder = props.placeholder;
         this.className = props.className ? props.className : "f-1";
         this.style = props.style;
-        this.items = props.items ? props.items : [];
-        this.listItems = this.items.map((object) =>
-            <option>{object}</option>
-        );
     }
 
     render() {
+        const listItems = this.props.items.map((object) =>
+            //object need to be type of application/hal+json
+            <option key={object._links.self.href}>{object.name}</option>
+        );
         return (
           <select size="1" className={styles[this.className]}>
-              {this.listItems}
+              {listItems}
           </select>
         );
     }
