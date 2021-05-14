@@ -4,15 +4,15 @@ import styles from "../styles/Field.module.scss";
 class InfoField extends React.Component {
     constructor(props) {
         super(props);
-        this.text = props.text;
         this.className = props.className ? props.className : "f-1";
         this.style = props.style;
     }
 
     render() {
+        const text = this.props.text;
         return (
             <div className={styles[this.className]} style={this.style}>
-                {this.text}
+                {text}
             </div>
         );
     }
@@ -21,15 +21,15 @@ class InfoField extends React.Component {
 class EditField extends React.Component {
     constructor(props) {
         super(props);
-        this.text = props.text;
         this.placeholder = props.placeholder;
         this.className = props.className ? props.className : "f-1";
         this.style = props.style;
     }
 
     render() {
+        const text = this.props.text;
         return (
-            <input type="text" className={styles[this.className]} style={this.style} value={this.text} placeholder={this.placeholder}/>
+            <input type="text" className={styles[this.className]} style={this.style} value={text} placeholder={this.placeholder}/>
         );
     }
 }
