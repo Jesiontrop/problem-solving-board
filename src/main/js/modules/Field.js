@@ -34,4 +34,26 @@ class EditField extends React.Component {
     }
 }
 
-export {EditField, InfoField};
+class SelectField extends React.Component {
+    constructor(props) {
+        super(props);
+        this.text = props.text;
+        this.placeholder = props.placeholder;
+        this.className = props.className ? props.className : "f-1";
+        this.style = props.style;
+        this.items = props.items ? props.items : [];
+        this.listItems = this.items.map((object) =>
+            <option>{object}</option>
+        );
+    }
+
+    render() {
+        return (
+          <select size="1" className={styles[this.className]}>
+              {this.listItems}
+          </select>
+        );
+    }
+}
+
+export {EditField, InfoField, SelectField};
