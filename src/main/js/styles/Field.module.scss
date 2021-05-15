@@ -45,6 +45,12 @@ input:focus, span:focus, textarea:focus, select:focus{
     text-align: left;
 }
 
+.textarea {
+    display: block;
+    overflow: hidden;
+    resize: none;
+}
+
 .text {
     @include roboto-24-regular;
     color: $black;

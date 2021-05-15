@@ -36,6 +36,17 @@ class EditField extends React.Component {
     }
 }
 
+class TextareaField extends React.Component {
+    constructor(props) {
+        super(props);
+        this.className = this.className = props.className ? props.className : "f-1";
+        this.style = props.style;
+        this.id = props.id;
+    }
+
+    render() {
+        return (
+            <span id={this.id} className={styles[this.className] + ' ' + styles.textarea} style={this.style} role="textbox" contentEditable/>
         );
     }
 }
@@ -61,4 +72,4 @@ class SelectField extends React.Component {
     }
 }
 
-export {EditField, InfoField, SelectField};
+export {EditField, InfoField, TextareaField, SelectField};
