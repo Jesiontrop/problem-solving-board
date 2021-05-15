@@ -26,5 +26,5 @@ public class Responsible {
     private Long id;
 
     @OneToOne(targetEntity = User.class)
-    private Long userId;
+    private Long user;
 }

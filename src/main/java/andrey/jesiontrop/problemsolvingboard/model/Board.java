@@ -41,39 +41,45 @@ public class Board {
 
     @ManyToOne(targetEntity = RiskLevel.class)
     @JoinColumn(name = "risk_level_id")
-    private RiskLevel riskLevelId;
+    private RiskLevel riskLevel;
 
     @Lob
     private String proposedSolution;
 
     @ManyToOne(targetEntity = Responsible.class)
     @JoinColumn(name = "responsible_id")
-    private Responsible responsibleId;
+    private Responsible responsible;
 
     private Date plannedDate;
     private Date actualDate;
 
     @ManyToOne(targetEntity = SolvingLevel.class)
     @JoinColumn(name = "solving_level_id")
-    private SolvingLevel solvingLevelId;
+    private SolvingLevel solvingLevel;
 
     @ManyToOne(targetEntity = ResolutionStatus.class)
     @JoinColumn(name = "resolution_status_id")
-    private ResolutionStatus resolutionStatusId;
+    private ResolutionStatus resolutionStatus;
 
     @ManyToOne(targetEntity = FmResponsible.class)
     @JoinColumn(name = "fm_responsible_id")
-    private FmResponsible fmResponsibleId;
+    private FmResponsible fmResponsible;
 
     private String reasonForRefusal;
 
     @ManyToOne(targetEntity = Informant.class)
     @JoinColumn(name = "informant_id")
-    private Informant informantId;
+    private Informant informant;
 
     @PrePersist
     void registrationDate() {
         this.registrationDate = new Date();
     }
 
+    public Board(Area area, String problem, RiskLevel riskLevelId, String proposedSolution) {
+        this.area = area;
+        this.problem = problem;
+        this.riskLevel = riskLevelId;
+        this.proposedSolution = proposedSolution;
+    }
 }
