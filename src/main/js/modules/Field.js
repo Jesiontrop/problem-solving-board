@@ -25,12 +25,17 @@ class EditField extends React.Component {
         this.placeholder = props.placeholder;
         this.className = props.className ? props.className : "f-1";
         this.style = props.style;
+        this.id = props.id;
     }
 
     render() {
         const text = this.props.text;
         return (
-            <input type="text" className={styles[this.className]} style={this.style} value={text} placeholder={this.placeholder}/>
+            <input id={this.id} type="text" className={styles[this.className]} style={this.style} value={text} placeholder={this.placeholder}/>
+        );
+    }
+}
+
         );
     }
 }
@@ -38,9 +43,9 @@ class EditField extends React.Component {
 class SelectField extends React.Component {
     constructor(props) {
         super(props);
-        this.placeholder = props.placeholder;
         this.className = props.className ? props.className : "f-1";
         this.style = props.style;
+        this.id = props.id;
     }
 
     render() {
@@ -49,7 +54,7 @@ class SelectField extends React.Component {
             <option key={object._links.self.href}>{object.name}</option>
         );
         return (
-          <select size="1" className={styles[this.className]}>
+          <select id={this.id} size="1" className={styles[this.className]}>
               {listItems}
           </select>
         );
