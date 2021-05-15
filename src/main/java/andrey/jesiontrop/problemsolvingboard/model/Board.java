@@ -65,6 +65,12 @@ public class Board {
     @JoinColumn(name = "fm_responsible_id")
     private FmResponsible fmResponsibleId;
 
+    private String reasonForRefusal;
+
+    @ManyToOne(targetEntity = Informant.class)
+    @JoinColumn(name = "informant_id")
+    private Informant informantId;
+
     @PrePersist
     void registrationDate() {
         this.registrationDate = new Date();

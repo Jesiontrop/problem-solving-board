@@ -58,6 +58,12 @@ CREATE TABLE IF NOT EXISTS solving_levels (
   name varchar(255)
 );
 
+CREATE TABLE IF NOT EXISTS informants (
+	id bigserial PRIMARY KEY,
+	fullname varchar(255),
+	position varchar(255)
+);
+
 CREATE TABLE IF NOT EXISTS board (
     id bigserial PRIMARY KEY,
     registration_date date,
@@ -72,6 +78,11 @@ CREATE TABLE IF NOT EXISTS board (
     resolution_status_id bigint,
     fm_responsible_id bigint,
     reason_for_refusal text,
+    informant_id bigint,
+    CONSTRAINT board_informant_id_fkey FOREIGN KEY (informant_id)
+        REFERENCES informants (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE CASCADE,
     CONSTRAINT board_area_id_fkey FOREIGN KEY (area_id)
         REFERENCES areas (id) MATCH SIMPLE
         ON UPDATE NO ACTION
@@ -128,7 +139,10 @@ CREATE OR REPLACE VIEW v_board AS
         rs.name AS resolution_status_name,
 		b.fm_responsible_id,
         fmr.name AS fm_responsible_name,
-        b.reason_for_refusal
+        b.reason_for_refusal,
+		b.informant_id,
+		i.fullname AS informant_fullname,
+		i.position AS informant_position
     FROM board b
         LEFT JOIN areas ON b.area_id = areas.id
         LEFT JOIN risk_levels rl ON b.risk_level_id = rl.id
@@ -136,6 +150,7 @@ CREATE OR REPLACE VIEW v_board AS
         LEFT JOIN solving_levels sl ON b.solving_level_id = sl.id
         LEFT JOIN resolution_statuses rs ON b.resolution_status_id = rs.id
         LEFT JOIN fm_responsible fmr ON b.fm_responsible_id = fmr.id
+		LEFT JOIN informants i ON b.informant_id = i.id
     ORDER BY b.registration_date DESC;
 
 /* Functions */
