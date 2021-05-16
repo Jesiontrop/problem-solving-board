@@ -7,6 +7,7 @@ DELETE FROM risk_levels;
 DELETE FROM solving_levels;
 DELETE FROM leaders;
 DELETE FROM users;
+DELETE FROM positions;
 
 SELECT setval('board_id_seq', 1, false);
 SELECT setval('areas_id_seq', 1, false);
@@ -17,6 +18,7 @@ SELECT setval('risk_levels_id_seq', 1, false);
 SELECT setval('solving_levels_id_seq', 1, false);
 SELECT setval('leaders_id_seq', 1, false);
 SELECT setval('users_id_seq', 1, false);
+SELECT setval('positions_id_seq', 1, false);
 
 INSERT INTO areas(name) VALUES
     ('ВиВОС'),
