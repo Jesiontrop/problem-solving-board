@@ -80,6 +80,8 @@ public class Board {
         this.area = area;
         this.problem = problem;
         this.riskLevel = riskLevelId;
-        this.proposedSolution = proposedSolution;
+        if (proposedSolution != null) {
+            this.proposedSolution = proposedSolution;
+        }
     }
 }

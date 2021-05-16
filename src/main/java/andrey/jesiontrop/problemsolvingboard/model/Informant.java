@@ -26,4 +26,9 @@ public class Informant {
 
     private String fullname;
     private String position;
+
+    public Informant(String fullname, String position) {
+        this.fullname = fullname;
+        this.position = position;
+    }
 }
