@@ -9,11 +9,11 @@ class Add extends React.Component {
     constructor(props) {
         super(props);
         this.editStyle = {width: "100%"};
-        this.state = {areas: [], riskLevels: []};
+        this.state = {positions: [], areas: [], riskLevels: []};
     }
 
     componentDidMount() {
-        client({method: "GET", path: '/api/positions'}).done(response => {
+        client({method: "GET", path: '/api/positions?size=100'}).done(response => {
             this.setState({positions: response.entity._embedded.positions})
         });
         client({method: "GET", path: '/api/areas'}).done(response => {
@@ -78,26 +78,15 @@ class Add extends React.Component {
                         <EditField id="fullname" className="f-2" style={this.editStyle}/>
                         <div>Должность (не обязательно)</div>
                         {/*need to avoid typeError*/}
-                        {this.state.positions !== undefined
-                            ? <SelectField id="position" className="f-2" items={this.state.positions}/>
-                            : <EditField id="position" className="f-2" style={this.editStyle}/>
-                        }
-                        {this.state.areas !== undefined
-                            ?
-                            <div>
-                                <div>Отделенение/участок где есть проблема (обязательно)</div>
-                                <SelectField id="area" className="f-2" items={this.state.areas}/>
-                            </div>
-                            : null
-                        }
-                        {this.state.riskLevels !== undefined
-                            ?
-                            <div>
-                                <div>Уровень риска (обязательно)</div>
-                                <SelectField id="riskLevel" className="f-2" items={this.state.riskLevels}/>
-                            </div>
-                            : null
-                        }
+                        <SelectField id="position" className="f-2" items={this.state.positions}/>
+                        <div>
+                            <div>Отделенение/участок где есть проблема (обязательно)</div>
+                            <SelectField id="area" className="f-2" items={this.state.areas}/>
+                        </div>
+                        <div>
+                            <div>Уровень риска (обязательно)</div>
+                            <SelectField id="riskLevel" className="f-2" items={this.state.riskLevels}/>
+                        </div>
                         <div>Проблема (обязательно)</div>
                         <TextareaField id="problem" className="f-2" style={this.editStyle}/>
                         <div>Предлогаемое решение (не обязательно)</div>
