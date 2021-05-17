@@ -38,21 +38,24 @@ class Add extends React.Component {
                         {/*need to avoid typeError*/}
                         {this.state.positions !== undefined
                             ? <SelectField id="position" className="f-2" items={this.state.positions}/>
-                            : <EditField id="position" className="f-2" style={this.editStyle}/>}
+                            : <EditField id="position" className="f-2" style={this.editStyle}/>
+                        }
                         {this.state.areas !== undefined
                             ?
                             <div>
                                 <div>Отделенение/участок где есть проблема (обязательно)</div>
                                 <SelectField id="area" className="f-2" items={this.state.areas}/>
                             </div>
-                            : null}
-                        {this.state.areas !== undefined
+                            : null
+                        }
+                        {this.state.riskLevels !== undefined
                             ?
                             <div>
                                 <div>Уровень риска (обязательно)</div>
                                 <SelectField id="riskLevel" className="f-2" items={this.state.riskLevels}/>
                             </div>
-                            : null}
+                            : null
+                        }
                         <div>Проблема (обязательно)</div>
                         <TextareaField id="problem" className="f-2" style={this.editStyle}/>
                         <div>Предлогаемое решение (не обязательно)</div>

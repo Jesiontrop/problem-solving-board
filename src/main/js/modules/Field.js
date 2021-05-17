@@ -29,9 +29,8 @@ class EditField extends React.Component {
     }
 
     render() {
-        const text = this.props.text;
         return (
-            <input id={this.id} type="text" className={styles[this.className]} style={this.style} value={text} placeholder={this.placeholder}/>
+            <input id={this.id} type="text" className={styles[this.className]} style={this.style} placeholder={this.placeholder}/>
         );
     }
 }
