@@ -1,6 +1,7 @@
 import React from "react";
 import {Button} from "./Button";
 import style from "../styles/Header.module.scss"
+import {Link} from "react-router-dom";
 
 class Header extends React.Component {
     constructor(props) {
@@ -15,7 +16,7 @@ class Header extends React.Component {
     render() {
         return (
             <header className={style.header}>
-                <Button className="b-2" style={this.styleHomeButton} text="ДРП"/>
+                <Link to="/" style={{textDecoration: 'none'}}><Button className="b-2" style={this.styleHomeButton} text="ДРП"/></Link>
                 <div className={style.text}>
                     {this.headline}
                 </div>
