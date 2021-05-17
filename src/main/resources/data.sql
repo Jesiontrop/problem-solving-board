@@ -8,6 +8,7 @@ DELETE FROM solving_levels;
 DELETE FROM leaders;
 DELETE FROM users;
 DELETE FROM positions;
+DELETE FROM informants;
 
 SELECT setval('board_id_seq', 1, false);
 SELECT setval('areas_id_seq', 1, false);
@@ -19,6 +20,7 @@ SELECT setval('solving_levels_id_seq', 1, false);
 SELECT setval('leaders_id_seq', 1, false);
 SELECT setval('users_id_seq', 1, false);
 SELECT setval('positions_id_seq', 1, false);
+SELECT setval('informants_id_seq', 1, false);
 
 INSERT INTO areas(name) VALUES
     ('ВиВОС'),
