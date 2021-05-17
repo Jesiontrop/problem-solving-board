@@ -24,6 +24,54 @@ class Add extends React.Component {
         });
     }
 
+    onSubmit() {
+        let fullname = document.getElementById("fullname").value;
+        let positionHref = document.getElementById("position").value;
+        let position;
+        let area = document.getElementById("area").value;
+        let riskLevel = document.getElementById("riskLevel").value;
+        let problem = document.getElementById("problem").innerText;
+        let proposedSolution = document.getElementById("proposedSolution").innerText;
+
+        client({method: "GET", path: positionHref}).done(response => {
+            position = response.entity.name;
+            console.log(position);
+            let informant = {
+                fullname: fullname,
+                position: position
+            }
+            client(
+                {
+                    method: "POST",
+                    path: '/api/informants',
+                    entity: informant,
+                    headers: {"Content-Type": "application/json"}
+                }).done(response => {
+                    let informant = response.entity._links.informant.href;
+                    let boardForm = {
+                        area: area,
+                        riskLevel: riskLevel,
+                        problem: problem,
+                        proposedSolution: proposedSolution,
+                        informant: informant
+                    }
+                    console.log(boardForm);
+                    client(
+                        {
+                            method: "POST",
+                            path: '/api/boards',
+                            entity: boardForm,
+                            headers: {"Content-Type": "application/json"}
+                        }).done(response => {
+                            console.log(response.entity);
+                    });
+                });
+        });
+
+        console.log(fullname);
+        console.log(positionHref);
+    }
+
     render() {
         return (
             <div>
@@ -59,8 +107,8 @@ class Add extends React.Component {
                         <div>Проблема (обязательно)</div>
                         <TextareaField id="problem" className="f-2" style={this.editStyle}/>
                         <div>Предлогаемое решение (не обязательно)</div>
-                        <TextareaField id="proposed_solution" className="f-2" style={this.editStyle}/>
-                        <Button className="b-3" text="Отправить на ДРП"/>
+                        <TextareaField id="proposedSolution" className="f-2" style={this.editStyle}/>
+                        <Button onClick={this.onSubmit} className="b-3" text="Отправить на ДРП"/>
                     </div>
                 </main>
             </div>
