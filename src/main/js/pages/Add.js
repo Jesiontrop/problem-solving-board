@@ -26,50 +26,44 @@ class Add extends React.Component {
 
     onSubmit() {
         let fullname = document.getElementById("fullname").value;
-        let positionHref = document.getElementById("position").value;
-        let position;
+        let positionSelect = document.getElementById("position");
+        let position = positionSelect.options[positionSelect.selectedIndex].text;
+        let informant = {
+            fullname: fullname,
+            position: position
+        }
+
         let area = document.getElementById("area").value;
         let riskLevel = document.getElementById("riskLevel").value;
         let problem = document.getElementById("problem").innerText;
         let proposedSolution = document.getElementById("proposedSolution").innerText;
 
-        client({method: "GET", path: positionHref}).done(response => {
-            position = response.entity.name;
-            console.log(position);
-            let informant = {
-                fullname: fullname,
-                position: position
+        client(
+            {
+                method: "POST",
+                path: '/api/informants',
+                entity: informant,
+                headers: {"Content-Type": "application/json"}
+            }).done(response => {
+            let informant = response.entity._links.informant.href;
+            let boardForm = {
+                area: area,
+                riskLevel: riskLevel,
+                problem: problem,
+                proposedSolution: proposedSolution,
+                informant: informant
             }
+            console.debug(boardForm);
             client(
                 {
                     method: "POST",
-                    path: '/api/informants',
-                    entity: informant,
+                    path: '/api/boards',
+                    entity: boardForm,
                     headers: {"Content-Type": "application/json"}
                 }).done(response => {
-                    let informant = response.entity._links.informant.href;
-                    let boardForm = {
-                        area: area,
-                        riskLevel: riskLevel,
-                        problem: problem,
-                        proposedSolution: proposedSolution,
-                        informant: informant
-                    }
-                    console.log(boardForm);
-                    client(
-                        {
-                            method: "POST",
-                            path: '/api/boards',
-                            entity: boardForm,
-                            headers: {"Content-Type": "application/json"}
-                        }).done(response => {
-                            console.log(response.entity);
-                    });
-                });
+                console.debug(response.entity);
+            });
         });
-
-        console.log(fullname);
-        console.log(positionHref);
     }
 
     render() {
