@@ -10,7 +10,7 @@ const Button = (props) => {
 
     return (
         <button className={styles[className]} style={props.style} onClick={onCustomClick}>
-            <p className={styles.text}>{text}</p>
+            <div className={styles.text}>{text}</div>
         </button>
     );
 };
