@@ -1,0 +1,23 @@
+@import "color";
+@import "text";
+
+.line {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+
+  * + * {
+    margin-left: 15px;
+  }
+
+  .text {
+    @include roboto-14-regular;
+    color: $black;
+    text-align: left;
+  }
+}
