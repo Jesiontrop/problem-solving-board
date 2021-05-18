@@ -16,10 +16,10 @@ class Add extends React.Component {
         client({method: "GET", path: '/api/positions?size=100'}).done(response => {
             this.setState({positions: response.entity._embedded.positions})
         });
-        client({method: "GET", path: '/api/areas'}).done(response => {
+        client({method: "GET", path: '/api/areas?size=100'}).done(response => {
             this.setState({areas: response.entity._embedded.areas})
         });
-        client({method: "GET", path: '/api/riskLevels'}).done(response => {
+        client({method: "GET", path: '/api/riskLevels?size=100'}).done(response => {
             this.setState({riskLevels: response.entity._embedded.riskLevels})
         });
     }
