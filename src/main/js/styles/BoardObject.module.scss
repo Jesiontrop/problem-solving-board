@@ -1,0 +1,25 @@
+@import "text";
+@import "color";
+
+.boardObject {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
+
+  position: relative;
+  width: 860px;
+  height: fit-content;
+
+  background: $gray-6;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 7px;
+
+  * + * {
+    margin-top: 10px;
+  }
+
+  * * {
+    margin-top: 0px;
+  }
+}
