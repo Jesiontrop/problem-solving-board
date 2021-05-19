@@ -8,7 +8,7 @@ import {Button} from "../modules/Button";
 class Board extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {path: "/api/boards?size=5", boards: [], page: {}, _links: {}};
+        this.state = {path: "/api/viewBoards?size=5", boards: [], page: {}, _links: {}};
         this.onPrevButton = this.onPrevButton.bind(this);
         this.onNextButton = this.onNextButton.bind(this);
     }
@@ -16,18 +16,18 @@ class Board extends React.Component {
     componentDidMount() {
         client({method: "GET", path: this.state.path}).done(response => {
             this.setState({
-                boards: response.entity._embedded.boards,
+                boards: response.entity._embedded.viewBoards,
                 page: response.entity.page,
                 _links: response.entity._links
             });
-            console.debug(response.entity._embedded.boards);
+            console.debug(response.entity._embedded.viewBoards);
         });
     }
 
     onPrevButton() {
         client({method: "GET", path: this.state._links.prev.href}).done(response => {
             this.setState({
-                boards: response.entity._embedded.boards,
+                boards: response.entity._embedded.viewBoards,
                 page: response.entity.page,
                 _links: response.entity._links
             });
@@ -38,7 +38,7 @@ class Board extends React.Component {
     onNextButton() {
         client({method: "GET", path: this.state._links.next.href}).done(response => {
             this.setState({
-                boards: response.entity._embedded.boards,
+                boards: response.entity._embedded.viewBoards,
                 page: response.entity.page,
                 _links: response.entity._links
             });

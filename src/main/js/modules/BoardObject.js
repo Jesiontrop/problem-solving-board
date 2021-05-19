@@ -29,9 +29,9 @@ class BoardObject extends React.Component {
         return (
             <div className={style.boardObject}>
                 <Line subtitle="Проблема" text={this.props.board.problem}/>
-                <Line subtitle="Участок" text={this.state.area.name}/>
-                <Line subtitle="Уровень риска" text={this.state.riskLevel.name}/>
-                <Line subtitle="Статус решения проблемы" text={this.state.resolutionStatus.name}/>
+                <Line subtitle="Участок" text={this.props.board.areaName}/>
+                <Line subtitle="Уровень риска" text={this.props.board.riskLevelName}/>
+                <Line subtitle="Статус решения проблемы" text={this.props.board.resolutionStatusName}/>
                 <Button className="b-3" text="Подробнее"/>
             </div>
         );
