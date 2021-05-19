@@ -62,7 +62,7 @@ class Board extends React.Component {
                         ?  <Button onClick={this.onPrevButton} className="b-3" text="<"/>
                         : null
                     }
-                     <div>
+                    <div className={styles.counter}>
                         {this.state.page.number + 1}/{this.state.page.totalPages}
                     </div>
                     {this.state._links.next

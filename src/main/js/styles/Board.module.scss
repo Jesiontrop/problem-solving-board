@@ -26,6 +26,13 @@
   position: static;
   height: fit-content;
   left: 0px;
+  
+  .counter {
+    @include roboto-14-regular;
+    color: $black;
+    align: center;
+  }
+  
 
   * + * {
     margin-left: 10px;
