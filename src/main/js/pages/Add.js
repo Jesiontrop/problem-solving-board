@@ -51,7 +51,8 @@ class Add extends React.Component {
                 riskLevel: riskLevel,
                 problem: problem,
                 proposedSolution: proposedSolution,
-                informant: informant
+                informant: informant,
+                resolutionStatus: "http://localhost:8080/api/resolutionStatuses/5"
             }
             console.debug(boardForm);
             client(
