@@ -129,7 +129,7 @@ CREATE OR REPLACE VIEW v_board AS
 		b.risk_level_id,
         rl.name AS risk_level_name,
         b.proposed_solution,
-		v_r.user_id,
+		b.responsible_id,
         v_r.user_username AS responsible_name,
         b.planned_date,
         b.actual_date,
