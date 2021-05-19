@@ -14,9 +14,13 @@ class Home extends React.Component {
             <div>
                 <Header hideHomeButton/>
                 <main className={style.homePage}>
-                    <Link to="/add" style={{textDecoration: 'none'}}><Button text="Занести проблему"/></Link>
+                    <Link to="/add" style={{textDecoration: 'none'}}>
+                        <Button text="Занести проблему"/>
+                    </Link>
 
-                    <Button text="Посмотреть доску решения проблем"/>
+                   <Link to="/board" style={{textDecoration: 'none'}}>
+                        <Button text="Посмотреть доску решения проблем"/>
+                    </Link>
                 </main>
             </div>
         );
