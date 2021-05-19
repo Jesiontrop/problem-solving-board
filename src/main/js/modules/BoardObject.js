@@ -20,7 +20,7 @@ class BoardObject extends React.Component {
             console.debug(response.entity);
         });
         client({method: "GET", path: this.props.board._links.resolutionStatus.href}).done(response => {
-            this.setState({resolutionStatus: response._links.self.href});
+            this.setState({resolutionStatus: response.entity});
             console.debug(response.entity);
         });
     }
