@@ -78,7 +78,6 @@ class Add extends React.Component {
                         <div>ФИО (не обязательно)</div>
                         <EditField id="fullname" className="f-2" style={this.editStyle}/>
                         <div>Должность (не обязательно)</div>
-                        {/*need to avoid typeError*/}
                         <SelectField id="position" className="f-2" items={this.state.positions}/>
                         <div>Отделенение/участок где есть проблема (обязательно)</div>
                         <SelectField id="area" className="f-2" items={this.state.areas}/>
