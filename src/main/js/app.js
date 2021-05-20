@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import style from "./styles/main.scss"
 import {Home} from "./pages/Home";
 import {Add} from "./pages/Add";
@@ -15,11 +15,11 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <BrowserRouter >
+                <BrowserRouter>
                     <Route exact path="/" component={Home}/>
                     <Route path="/add" component={Add}/>
                     <Route path="/board" component={Board}/>
-                    <Route path="/information" component={Information}/>
+                    <Route path="/information/:id" component={Information}/>
                 </BrowserRouter>
             </div>
         );
