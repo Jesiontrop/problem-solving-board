@@ -3,6 +3,7 @@ import style from "../styles/BoardObject.module.scss";
 import client from "../client";
 import {Button} from "./Button";
 import {Line} from "./Line";
+import {Link} from "react-router-dom";
 
 class BoardObject extends React.Component {
     constructor(props) {
@@ -32,7 +33,10 @@ class BoardObject extends React.Component {
                 <Line subtitle="Участок" text={this.props.board.areaName}/>
                 <Line subtitle="Уровень риска" text={this.props.board.riskLevelName}/>
                 <Line subtitle="Статус решения проблемы" text={this.props.board.resolutionStatusName}/>
-                <Button className="b-3" text="Подробнее"/>
+                <Link to={"/information/" + this.props.board.id} style={{textDecoration: 'none'}}>
+                    <Button className="b-3" text="Подробнее"/>
+                </Link>
+
             </div>
         );
     }
