@@ -28,7 +28,7 @@ class Information extends React.Component {
             <div>
                 <Header headline="Подробная информация о проблеме"/>
                 <main className={styles.informationPage}>
-                    <Button className="b-3" text="Вернуться назад"/>
+                    <Button className="b-3" onClick={this.props.history.goBack} text="Вернуться назад"/>
                     <Line subtitle="Регистарционный номер" text={this.state.board.id}/>
                     <Line subtitle="Время и дата регистрации" text={this.state.board.registrationDate}/>
                     <Line subtitle="Участок" text={this.state.board.areaName}/>
