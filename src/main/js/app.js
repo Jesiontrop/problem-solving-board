@@ -5,6 +5,7 @@ import style from "./styles/main.scss"
 import {Home} from "./pages/Home";
 import {Add} from "./pages/Add";
 import {Board} from "./pages/Board";
+import {Information} from "./pages/Information";
 
 class App extends React.Component {
     constructor(props) {
@@ -18,6 +19,7 @@ class App extends React.Component {
                     <Route exact path="/" component={Home}/>
                     <Route path="/add" component={Add}/>
                     <Route path="/board" component={Board}/>
+                    <Route path="/information" component={Information}/>
                 </BrowserRouter>
             </div>
         );
