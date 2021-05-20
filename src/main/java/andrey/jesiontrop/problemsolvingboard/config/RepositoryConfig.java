@@ -14,22 +14,26 @@ import andrey.jesiontrop.problemsolvingboard.model.SolvingLevel;
 import andrey.jesiontrop.problemsolvingboard.model.User;
 import andrey.jesiontrop.problemsolvingboard.model.Area;
 import andrey.jesiontrop.problemsolvingboard.model.Board;
+import andrey.jesiontrop.problemsolvingboard.model.Informant;
+import andrey.jesiontrop.problemsolvingboard.model.ViewBoard;
 
 @Configuration
 public class RepositoryConfig implements RepositoryRestConfigurer {
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
         config.exposeIdsFor(
-            Area.class,
-            Board.class,
-            FmResponsible.class,
-            Leader.class,
-            Position.class,
-            ResolutionStatus.class,
-            Responsible.class,
-            RiskLevel.class,
-            SolvingLevel.class,
-            User.class
+                Area.class,
+                Board.class,
+                FmResponsible.class,
+                Leader.class,
+                Position.class,
+                ResolutionStatus.class,
+                Responsible.class,
+                RiskLevel.class,
+                SolvingLevel.class,
+                User.class,
+                Informant.class,
+                ViewBoard.class
         );
     }
 }
