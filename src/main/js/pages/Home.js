@@ -1,8 +1,8 @@
 import React from "react";
-import {Button} from "../modules/Button";
-import {Header} from "../modules/Header";
+import { Button } from "../modules/Button";
+import { Header } from "../modules/Header";
 import style from "../styles/Home.module.scss"
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class Home extends React.Component {
     constructor(props) {
@@ -12,14 +12,14 @@ class Home extends React.Component {
     render() {
         return (
             <div>
-                <Header hideHomeButton/>
+                <Header hideHomeButton />
                 <main className={style.homePage}>
-                    <Link to="/add" style={{textDecoration: 'none'}}>
-                        <Button text="Занести проблему"/>
+                    <Link to="/add" style={{ textDecoration: 'none' }}>
+                        <Button text="Занести проблему" />
                     </Link>
 
-                   <Link to="/board" style={{textDecoration: 'none'}}>
-                        <Button text="Посмотреть доску решения проблем"/>
+                    <Link to="/board" style={{ textDecoration: 'none' }}>
+                        <Button text="Посмотреть доску решения проблем" />
                     </Link>
                 </main>
             </div>
@@ -27,4 +27,4 @@ class Home extends React.Component {
     }
 }
 
-export {Home}
+export { Home }

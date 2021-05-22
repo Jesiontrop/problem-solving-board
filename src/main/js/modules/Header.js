@@ -31,7 +31,7 @@ class Header extends React.Component {
                     </div>
                     <Button className="b-2" text={this.buttonText} onClick={this.onShowOverlay} />
                 </header>
-                <Overlay ref={this.overlay}/>
+                <Overlay ref={this.overlay} />
             </div>
 
         );

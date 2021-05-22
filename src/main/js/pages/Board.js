@@ -1,20 +1,20 @@
 import React from "react";
 import client from "../client";
 import styles from "../styles/Board.module.scss"
-import {BoardObject} from "../modules/BoardObject";
-import {Header} from "../modules/Header";
-import {Button} from "../modules/Button";
+import { BoardObject } from "../modules/BoardObject";
+import { Header } from "../modules/Header";
+import { Button } from "../modules/Button";
 
 class Board extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {path: "/api/viewBoards?size=5", boards: [], page: {}, _links: {}};
+        this.state = { path: "/api/viewBoards?size=5", boards: [], page: {}, _links: {} };
         this.onPrevButton = this.onPrevButton.bind(this);
         this.onNextButton = this.onNextButton.bind(this);
     }
 
     componentDidMount() {
-        client({method: "GET", path: this.state.path}).done(response => {
+        client({ method: "GET", path: this.state.path }).done(response => {
             this.setState({
                 boards: response.entity._embedded.viewBoards,
                 page: response.entity.page,
@@ -25,7 +25,7 @@ class Board extends React.Component {
     }
 
     onPrevButton() {
-        client({method: "GET", path: this.state._links.prev.href}).done(response => {
+        client({ method: "GET", path: this.state._links.prev.href }).done(response => {
             this.setState({
                 boards: response.entity._embedded.viewBoards,
                 page: response.entity.page,
@@ -36,7 +36,7 @@ class Board extends React.Component {
     }
 
     onNextButton() {
-        client({method: "GET", path: this.state._links.next.href}).done(response => {
+        client({ method: "GET", path: this.state._links.next.href }).done(response => {
             this.setState({
                 boards: response.entity._embedded.viewBoards,
                 page: response.entity.page,
@@ -49,24 +49,24 @@ class Board extends React.Component {
     render() {
         const listItems = this.state.boards.map((object) =>
             //object need to be type of application/hal+json
-            <BoardObject key={object._links.self.href} board={object}/>
+            <BoardObject key={object._links.self.href} board={object} />
         );
         return (
             <div>
-                <Header headline="Доска решения проблем"/>
+                <Header headline="Доска решения проблем" />
                 <main className={styles.boardPage}>
                     {listItems}
                 </main>
                 <footer className={styles.boardFooter}>
                     {this.state._links.prev
-                        ?  <Button onClick={this.onPrevButton} className="b-3" text="<"/>
+                        ? <Button onClick={this.onPrevButton} className="b-3" text="<" />
                         : null
                     }
                     <div className={styles.counter}>
                         {this.state.page.number + 1}/{this.state.page.totalPages}
                     </div>
                     {this.state._links.next
-                        ? <Button onClick={this.onNextButton} className="b-3" text=">"/>
+                        ? <Button onClick={this.onNextButton} className="b-3" text=">" />
                         : null
                     }
                 </footer>
@@ -76,4 +76,4 @@ class Board extends React.Component {
     }
 }
 
-export {Board}
+export { Board }

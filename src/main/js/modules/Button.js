@@ -6,7 +6,7 @@ const Button = (props) => {
 
     const className = props.className ? props.className : "b-1"
 
-    const onCustomClick = props.onClick ? props.onClick : function () {};
+    const onCustomClick = props.onClick ? props.onClick : function () { };
 
     return (
         <button className={styles[className]} style={props.style} onClick={onCustomClick}>
@@ -15,4 +15,4 @@ const Button = (props) => {
     );
 };
 
-export {Button};
+export { Button };

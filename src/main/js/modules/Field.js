@@ -31,7 +31,7 @@ class EditField extends React.Component {
 
     render() {
         return (
-            <input id={this.id} type={this.type} className={styles[this.className]} style={this.style} placeholder={this.placeholder}/>
+            <input id={this.id} type={this.type} className={styles[this.className]} style={this.style} placeholder={this.placeholder} />
         );
     }
 }
@@ -46,7 +46,7 @@ class TextareaField extends React.Component {
 
     render() {
         return (
-            <span id={this.id} className={styles[this.className] + ' ' + styles.textarea} style={this.style} role="textbox" contentEditable/>
+            <span id={this.id} className={styles[this.className] + ' ' + styles.textarea} style={this.style} role="textbox" contentEditable />
         );
     }
 }
@@ -65,15 +65,15 @@ class SelectField extends React.Component {
             <option key={object._links.self.href} value={object._links.self.href}>{object.name}</option>
         );
         return (
-          <select id={this.id} size="1" className={styles[this.className]} style={this.style}>
-              {this.props.placeholder
-                ? <option value="" disabled selected>{this.props.placeholder}</option>
-                : null             
-              }
-              {listItems}
-          </select>
+            <select id={this.id} size="1" className={styles[this.className]} style={this.style}>
+                {this.props.placeholder
+                    ? <option value="" disabled selected>{this.props.placeholder}</option>
+                    : null
+                }
+                {listItems}
+            </select>
         );
     }
 }
 
-export {EditField, InfoField, TextareaField, SelectField};
+export { EditField, InfoField, TextareaField, SelectField };
