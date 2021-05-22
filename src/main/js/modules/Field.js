@@ -64,7 +64,11 @@ class SelectField extends React.Component {
             <option key={object._links.self.href} value={object._links.self.href}>{object.name}</option>
         );
         return (
-          <select id={this.id} size="1" className={styles[this.className]}>
+          <select id={this.id} size="1" className={styles[this.className]} style={this.style}>
+              {this.props.placeholder
+                ? <option value="" disabled selected>{this.props.placeholder}</option>
+                : null             
+              }
               {listItems}
           </select>
         );
