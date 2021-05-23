@@ -33,6 +33,35 @@ class Registration extends React.Component {
         });
     }
 
+    registration() {
+        let email = document.getElementById("email").value;
+        let username = document.getElementById("username").value;
+        let positionSelect = document.getElementById("position");
+        let position = positionSelect.options[positionSelect.selectedIndex].text;
+        let password = document.getElementById("password").value;
+        let repeatPassword = document.getElementById("repeatPassword").value;
+
+        if (password === repeatPassword) {
+                
+            let user = {
+                username: username,
+                email: email,
+                position: position,
+                password: password
+            }
+            client(
+                {
+                    method: "POST",
+                    path: '/api/users',
+                    entity: user,
+                    headers: { "Content-Type": "application/json" }
+                }).done(response => {
+                    console.log(response.entity);
+                    
+                });
+        }
+    }
+
     render() {
 
         return (
@@ -42,7 +71,7 @@ class Registration extends React.Component {
                 <SelectField id="position" className="f-2" placeholder="Должность" items={this.state.positions} style={this.editStyle} />
                 <EditField id="password" type="password" className="f-2" placeholder="Пароль" style={this.editStyle} />
                 <EditField id="repeatPassword" type="password" className="f-2" placeholder="Повторите пароль" style={this.editStyle} />
-                <Button className="b-3" text="Зарегестрироваться" onClick />
+                <Button className="b-3" text="Зарегестрироваться" onClick={this.registration} />
                 <Button className="b-3" text="Войти" onClick={this.props.changeForm} />
 
             </div>
