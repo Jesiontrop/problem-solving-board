@@ -31,7 +31,7 @@ class EditField extends React.Component {
 
     render() {
         return (
-            <input id={this.id} type={this.type} className={styles[this.className]} style={this.style} placeholder={this.placeholder} />
+            <input type={this.type} id={this.id} name={this.props.name} className={styles[this.className]} style={this.style} placeholder={this.placeholder} />
         );
     }
 }
