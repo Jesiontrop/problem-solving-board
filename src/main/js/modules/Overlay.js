@@ -4,19 +4,24 @@ import client from "../client";
 import { Button } from "./Button";
 import { EditField, SelectField } from "./Field";
 
-const Login = (props) => {
+class Login extends React.Component {
 
-    const editStyle = { width: "100%" };
+    constructor(props) {
+        super(props);
 
-    return (
-        <div className={styles.login} style={props.style}>
-            <EditField id="email" className="f-2" placeholder="Email" style={editStyle} />
-            <EditField id="password" className="f-2" placeholder="Пароль" style={editStyle} />
-            <Button className="b-3" text="Войти" />
-            <Button className="b-3" text="Зарегестрироваться" onClick={props.changeForm} />
-        </div>
-    );
+        this.editStyle = { width: "100%" };
+    }
 
+    render() {
+        return(
+            <form method="post" action="/login" className={styles.login} style={this.props.style}>
+                <EditField type="text" id="username" name="email" className="f-2" placeholder="Email" style={this.editStyle} />
+                <EditField type="password" id="password" name="password" className="f-2" placeholder="Пароль" style={this.editStyle} />
+                <Button className="b-3" text="Войти" />
+                <Button className="b-3" text="Зарегестрироваться" onClick={this.props.changeForm} />
+            </form>
+        );
+    }
 }
 
 class Registration extends React.Component {
