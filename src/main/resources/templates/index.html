@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<div th:if="${isAuth}" style="visibility: hidden; display: none">
+<div id="authInfo" th:if="${isAuth}" style="visibility: hidden; display: none">
     <span id="authId" th:text="${user.id}">id</span>
     <span id="authUsername" th:text="${user.username}">username</span>
     <span id="authEmail" th:text="${user.email}">email</span>
