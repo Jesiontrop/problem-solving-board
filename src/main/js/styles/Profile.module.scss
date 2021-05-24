@@ -1,0 +1,19 @@
+@import "text";
+@import "color";
+
+.profilePage {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 40px;
+
+    position: static;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+
+    * + * {
+        margin-top: 15px;
+    }
+
+}
