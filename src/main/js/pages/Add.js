@@ -70,7 +70,7 @@ class Add extends React.Component {
     render() {
         return (
             <div>
-                <Header text="Занести проблему" />
+                <Header headline="Занести проблему" />
                 <main className={style.addPage}>
                     <div className={style.separator}>
                     </div>
