@@ -21,6 +21,7 @@ public class WebController {
 
         return "index";
     }
+
     @GetMapping("/add")
     public String add(Model model, @AuthenticationPrincipal User user) {
         boolean isAuth = false;
@@ -32,6 +33,7 @@ public class WebController {
 
         return "index";
     }
+
     @GetMapping("/board")
     public String board(Model model, @AuthenticationPrincipal User user) {
         boolean isAuth = false;
@@ -43,8 +45,21 @@ public class WebController {
 
         return "index";
     }
+
     @GetMapping("/information/{id}")
     public String information(@PathVariable String id, Model model, @AuthenticationPrincipal User user) {
+        boolean isAuth = false;
+        if (user != null) {
+            model.addAttribute("user", user);
+            isAuth = true;
+        }
+        model.addAttribute("isAuth", isAuth);
+
+        return "index";
+    }
+
+    @GetMapping("/profile")
+    public String profile( Model model, @AuthenticationPrincipal User user) {
         boolean isAuth = false;
         if (user != null) {
             model.addAttribute("user", user);
