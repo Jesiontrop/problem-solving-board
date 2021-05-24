@@ -39,7 +39,7 @@ public class User implements UserDetails {
 
     @OneToOne(targetEntity = Leader.class)
     @JoinColumn(name = "leader_id")
-    private Leader leaderId;
+    private Leader leader;
 
     public User(String username, String email, String position, String password) {
         this.username = username;
