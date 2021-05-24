@@ -8,8 +8,6 @@ class Header extends React.Component {
     constructor(props) {
         super(props);
         this.headline = props.headline;
-        this.status = props.status;
-        this.buttonText = this.status ? "Профиль" : "Войти";
         this.hideHomeButton = props.hideHomeButton;
         this.styleHomeButton = this.hideHomeButton ? { display: "none" } : {};
         this.onShowOverlay = this.onShowOverlay.bind(this);
@@ -17,11 +15,11 @@ class Header extends React.Component {
     }
 
     onShowOverlay() {
-        // document.getElementById("overlay").style.display = "flex";
         this.overlay.current.show();
     }
 
     render() {
+        let isAuth = document.body.contains(document.getElementById("authInfo"));
         return (
             <div>
                 <header className={style.header}>
@@ -29,7 +27,11 @@ class Header extends React.Component {
                     <div className={style.text}>
                         {this.headline}
                     </div>
-                    <Button className="b-2" text={this.buttonText} onClick={this.onShowOverlay} />
+                    {isAuth
+                        ? <Button className="b-2" text="Профиль" />
+                        : <Button className="b-2" text="Войти" onClick={this.onShowOverlay} />
+                    }
+
                 </header>
                 <Overlay ref={this.overlay} />
             </div>
