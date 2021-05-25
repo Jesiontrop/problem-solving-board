@@ -15,6 +15,11 @@
   * + * {
     margin-top: 15px;
   }
+
+  .text {
+    @include roboto-14-regular;
+    align: left;
+  }
 }
 
 .boardFooter {

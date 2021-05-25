@@ -55,6 +55,7 @@ class Board extends React.Component {
             <div>
                 <Header headline="Доска решения проблем" />
                 <main className={styles.boardPage}>
+                    <div className={styles.text}>Всего {this.state.page.totalElements} проблемы</div>
                     {listItems}
                 </main>
                 <footer className={styles.boardFooter}>
