@@ -10,6 +10,8 @@ class Header extends React.Component {
         this.headline = props.headline;
         this.hideHomeButton = props.hideHomeButton;
         this.styleHomeButton = this.hideHomeButton ? { display: "none" } : {};
+        this.hideProfileButton = props.hideProfileButton;
+        this.styleProfileButton = props.hideProfileButton ? { display : "none"} : {};
         this.onShowOverlay = this.onShowOverlay.bind(this);
         this.overlay = React.createRef();
     }
@@ -28,7 +30,9 @@ class Header extends React.Component {
                         {this.headline}
                     </div>
                     {isAuth
-                        ? <Button className="b-2" text="Профиль" />
+                        ?   <Link to="/profile" style={{ textDecoration: 'none' }}>
+                                <Button className="b-2" style={this.styleProfileButton} text="Профиль" />
+                            </Link>
                         : <Button className="b-2" text="Войти" onClick={this.onShowOverlay} />
                     }
 
