@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS informants (
 
 CREATE TABLE IF NOT EXISTS board (
     id bigserial PRIMARY KEY,
-    registration_date date,
+    registration_date timestamp with time zone,
     area_id bigint,
     problem text,
     risk_level_id bigint,
@@ -120,38 +120,40 @@ CREATE OR REPLACE VIEW v_responsible AS
 	LEFT JOIN users AS u ON
 		r.user_id = u.id;
 
-CREATE OR REPLACE VIEW v_board AS
-    SELECT b.id,
-        b.registration_date,
-		b.area_id,
-        areas.name AS area_name,
-        b.problem,
-		b.risk_level_id,
-        rl.name AS risk_level_name,
-        b.proposed_solution,
-		b.responsible_id,
-        v_r.user_username AS responsible_name,
-        b.planned_date,
-        b.actual_date,
-		b.solving_level_id,
-        sl.name AS solving_level_name,
-		b.resolution_status_id,
-        rs.name AS resolution_status_name,
-		b.fm_responsible_id,
-        fmr.name AS fm_responsible_name,
-        b.reason_for_refusal,
-		b.informant_id,
-		i.fullname AS informant_fullname,
-		i.position AS informant_position
-    FROM board b
-        LEFT JOIN areas ON b.area_id = areas.id
-        LEFT JOIN risk_levels rl ON b.risk_level_id = rl.id
-        LEFT JOIN v_responsible v_r ON b.responsible_id = v_r.id
-        LEFT JOIN solving_levels sl ON b.solving_level_id = sl.id
-        LEFT JOIN resolution_statuses rs ON b.resolution_status_id = rs.id
-        LEFT JOIN fm_responsible fmr ON b.fm_responsible_id = fmr.id
-		LEFT JOIN informants i ON b.informant_id = i.id
-    ORDER BY b.registration_date DESC;
+CREATE OR REPLACE VIEW public.v_board
+ AS
+SELECT b.id,
+       b.registration_date,
+       b.area_id,
+       areas.name AS area_name,
+       b.problem,
+       b.risk_level_id,
+       rl.name AS risk_level_name,
+       b.proposed_solution,
+       b.responsible_id,
+       v_r.user_username AS responsible_name,
+       v_r.user_email AS responsible_email,
+       b.planned_date,
+       b.actual_date,
+       b.solving_level_id,
+       sl.name AS solving_level_name,
+       b.resolution_status_id,
+       rs.name AS resolution_status_name,
+       b.fm_responsible_id,
+       fmr.name AS fm_responsible_name,
+       b.reason_for_refusal,
+       b.informant_id,
+       i.fullname AS informant_fullname,
+       i."position" AS informant_position
+FROM board b
+         LEFT JOIN areas ON b.area_id = areas.id
+         LEFT JOIN risk_levels rl ON b.risk_level_id = rl.id
+         LEFT JOIN v_responsible v_r ON b.responsible_id = v_r.id
+         LEFT JOIN solving_levels sl ON b.solving_level_id = sl.id
+         LEFT JOIN resolution_statuses rs ON b.resolution_status_id = rs.id
+         LEFT JOIN fm_responsible fmr ON b.fm_responsible_id = fmr.id
+         LEFT JOIN informants i ON b.informant_id = i.id
+ORDER BY b.registration_date DESC;
 
 /* Functions */
 

@@ -39,6 +39,7 @@ public class ViewBoard {
     @JoinColumn(name = "responsible_id")
     private Responsible responsible;
     private String responsibleName;
+    private String responsibleEmail;
 
     private Date plannedDate;
     private Date actualDate;
