@@ -1,7 +1,7 @@
 /* Tables */
 
 CREATE TABLE IF NOT EXISTS positions (
-	id serial PRIMARY KEY,
+	id bigserial PRIMARY KEY,
 	name varchar(255)
 );
 
