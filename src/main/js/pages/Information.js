@@ -23,8 +23,21 @@ class Information extends React.Component {
         });
     }
 
+    change() {
+        this.setState({isChange: true});
+    }
+
     render() {
+        let leaderField = document.getElementById("authLeader");
+        let leader = false;
+        if (leaderField) 
+            leader = true;
+
+        let responsible = "";
+        if (this.state.board.responsibleName)
+            responsible = this.state.board.responsibleName + " " + this.state.board.responsibleEmail;
         return (
+            
             <div>
                 <Header headline="Подробная информация о проблеме" />
                 <main className={styles.informationPage}>
@@ -35,13 +48,16 @@ class Information extends React.Component {
                     <Line subtitle="Проблема" text={this.state.board.problem} />
                     <Line subtitle="Уровень риска" text={this.state.board.riskLevelName} />
                     <Line subtitle="Предлагаемое решение" text={this.state.board.proposedSolution} />
-                    <Line subtitle="Ответственный за решение" text={this.state.board.responsibleName} />
+                    <Line subtitle="Ответственный за решение" text={responsible} />
                     <Line subtitle="Плановая дата решения проблемы" text={this.state.board.plannedDate} />
                     <Line subtitle="Фактическая дата решения проблемы" text={this.state.board.actualDate} />
                     <Line subtitle="Уровень решения проблемы" text={this.state.board.solvingLevelName} />
                     <Line subtitle="Статус решения проблемы" text={this.state.board.resolutionStatusName} />
                     <Line subtitle="Ответственное ФН за решение проблемы" text={this.state.board.fmResponsibleName} />
-
+                    {leader
+                        ? <Button className="b-3" text="Назначить ответсвенного за решение"/>
+                        : null
+                    }
                 </main>
             </div>
 
