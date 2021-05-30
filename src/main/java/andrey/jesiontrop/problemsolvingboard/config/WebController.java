@@ -69,4 +69,16 @@ public class WebController {
 
         return "index";
     }
+
+    @GetMapping("/users")
+    public String users( Model model, @AuthenticationPrincipal User user) {
+        boolean isAuth = false;
+        if (user != null) {
+            model.addAttribute("user", user);
+            isAuth = true;
+        }
+        model.addAttribute("isAuth", isAuth);
+
+        return "index";
+    }
 }
