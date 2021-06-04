@@ -14,6 +14,7 @@ class Information extends React.Component {
             board: {},
             riskLevels: [],
             solvingLevel: [],
+            users: [],
             fmResponsible: [],
             isChange: false 
         };
@@ -39,6 +40,9 @@ class Information extends React.Component {
         client({ method: "GET", path: '/api/fmResponsibles?size=100' }).done(response => {
             this.setState({ fmResponsible: response.entity._embedded.fmResponsibles })
         });
+        client({ method: "GET", path: '/api/users?size=2000' }).done(response => {
+            this.setState({ fmResponsible: response.entity._embedded.fmResponsibles })
+        });
     }
 
     changeForm() {
@@ -48,6 +52,9 @@ class Information extends React.Component {
     commitChange() {
         let riskLevel = document.getElementById("riskLevel").value;
         let proposedSolution = document.getElementById("proposedSolution").innerText;
+        let user =  document.getElementById("responsible").value;
+        let userSplit = user.split("/");
+        let userId = userSplit[userSplit.length - 1];
         let plannedDate = document.getElementById("plannedDate").innerText;
         let actualDate = document.getElementById("actualDate").innerText;
         let solvingLevel = document.getElementById("solvingLevel").value;
@@ -63,24 +70,45 @@ class Information extends React.Component {
             board.plannedDate = plannedDate;
         if(actualDate)
             board.actualDate = actualDate;
+
         client(
             {
-                method: "PATCH",
-                path: '/api/boards/' + this.props.match.params.id,
-                entity: board,
-                headers: { "Content-Type": "application/json" }
-            }).done(response => {
-                let path = "/api/viewBoards/" + this.props.match.params.id;
-                console.debug(path);
-                client({ method: "GET", path: path }).done(response => {
-                    this.setState({
-                        board: response.entity
-                    });
-                    console.debug(response.entity);
-                    this.changeForm();
-                });
-            });
-        
+                method: "GET",
+                path: '/api/responsibles/search/findByUserId/' + userId
+            }
+        ).done(response => {
+            if (response.status.code == "200") {
+                board.responsible = response.entity._embedded.responsibles[0]._links.self;
+            }
+            else {
+                let responsible  = {userId: user}
+                client({                    
+                    method: "POST",
+                    path: '/api/responsibles',
+                    entity: responsible,
+                    headers: { "Content-Type": "application/json" }
+                }).done(response => {
+                    board.responsible = response.entity._embedded.responsibles[0]._links.self;
+                    client(
+                        {
+                            method: "PATCH",
+                            path: '/api/boards/' + this.props.match.params.id,
+                            entity: board,
+                            headers: { "Content-Type": "application/json" }
+                        }).done(response => {
+                            let path = "/api/viewBoards/" + this.props.match.params.id;
+                            console.debug(path);
+                            client({ method: "GET", path: path }).done(response => {
+                                this.setState({
+                                    board: response.entity
+                                });
+                                console.debug(response.entity);
+                                this.changeForm();
+                            });
+                        });
+                })
+            }
+        })
     }
 
     render() {
@@ -115,10 +143,6 @@ class Information extends React.Component {
                             ? <Button className="b-3" text="Изменить данные" onClick={this.changeForm} />
                             : null
                         }
-                        {leader
-                            ? <Button className="b-3" text="Назначить ответсвенного" />
-                            : null
-                        }
                     </main>
                     :
                     <main className={styles.informationPage}>
@@ -129,6 +153,7 @@ class Information extends React.Component {
                         <Line subtitle="Проблема" text={this.state.board.problem} />
                         <SelectLine id="riskLevel" subtitle="Уровень риска" items={this.state.riskLevels} />
                         <Line id="proposedSolution" subtitle="Предлагаемое решение" text={this.state.board.proposedSolution} editable />
+                        <SelectLine id="responsible" subtitle="Ответсвенный за решение" items={this.state.users} />
                         <Line id="plannedDate" subtitle="Плановая дата решения проблемы" text={this.state.board.plannedDate} editable />
                         <Line id="actualDate" subtitle="Фактическая дата решения проблемы" text={this.state.board.actualDate} editable />
                         <SelectLine id="solvingLevel" subtitle="Уровень решения проблемы"  items={this.state.solvingLevel} />
